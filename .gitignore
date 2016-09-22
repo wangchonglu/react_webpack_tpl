@@ -20,6 +20,8 @@
 *.lib
 *.sbr
 /node_modules
+/dist
+/.idea
 obj/
 [Rr]elease*/
 _ReSharper*/
