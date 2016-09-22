@@ -1,0 +1,14 @@
+#topBar {
+    background-color: darkorange;
+    padding: 2px 0px;
+
+    .navHeader .item {
+        float: left;
+        width: 200px;
+    }
+    .navHeader .item a:hover {
+        color: white;
+    }
+
+}
+
