@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Router, Route, IndexRoute,hashHistory  } from 'react-router'
+import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 
 import Index from "./index"
 import Header from "./header"
-import RoleManager from "./roleManager"
-import UserManager from "./userManager"
 import NoMatch from "./noMatch"
 
 import '../css/app.scss'
@@ -36,8 +34,12 @@ ReactDOM.render(
     <Route path="/" component={App}>
       <IndexRoute component={Index}/> //默认首页
       <Route path="index" component={Index}/>
-      <Route path="roleManager/:id" component={RoleManager}/>
-      <Route path="userManager/:id" component={UserManager}/>
+      //动态获取路由
+      <Route path=":page/:id" getComponent={function (nextState, cb) {
+        require.ensure([], (require) => {
+          cb(null, require("./"+nextState.params.page).default)
+        })
+      }}/>
       <Route path="*" component={NoMatch}/>
     </Route>
   </Router>,
