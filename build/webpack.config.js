@@ -8,10 +8,10 @@ module.exports = {
   entry: [
     'eventsource-polyfill',// necessary for hot reloading with IE:
     'webpack-hot-middleware/client',// listen to code updates emitted by hot middleware:
-    "./components/app.js"
+    path.resolve(__dirname, '../src/components/app.js'),
   ],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '/dist'),
     filename: 'js/[name].[hash].js'
   },
   plugins: [
@@ -31,7 +31,7 @@ module.exports = {
     //生成html文件，自动引用入口js文件
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: 'index.html',
+      template: 'src/index.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -60,9 +60,17 @@ module.exports = {
         loader: 'url?limit=1024&name=imgs/[name]_[hash:7].[ext]'
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         loaders: ['style', 'css', 'sass']
       }
     ]
+  },
+  resolve: {
+    //自动扩展文件后缀名，require模块可以省略不写后缀名
+    extensions: ['', '.js', '.json', '.scss'],
+    //模块别名定义
+    alias: {
+      // AppStore : 'js/stores/AppStores.js',//后续直接 require('AppStore') 即可
+    }
   }
 };

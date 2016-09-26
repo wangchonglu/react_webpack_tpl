@@ -3,6 +3,7 @@
  */
 import React from "react"
 import '../css/index.scss'
+import {DatePicker, Button, Input} from 'antd';
 
 export default class Index extends React.Component {
 
@@ -15,8 +16,14 @@ export default class Index extends React.Component {
 
     return (
       <div>
-        首页内容
-        <input type="button" value="  GD " onClick={this.handleClick.bind(this)}/>
+        <br/><br/>
+        <div className="ant-row">
+          <div className="ant-col-6"></div>
+          <div className="ant-col-4"><Input/></div>
+          <div className="ant-col-4"><DatePicker /></div>
+          <div className="ant-col-4"><Button onClick={this.handleClick}> 提交 </Button></div>
+          <div className="ant-col-6"></div>
+        </div>
       </div>
     );
   }

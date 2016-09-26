@@ -7,7 +7,9 @@ import Index from "./index"
 import Header from "./header"
 import NoMatch from "./noMatch"
 
+import 'antd/dist/antd.min.css';
 import '../css/app.scss'
+
 
 //app
 const App = React.createClass({
